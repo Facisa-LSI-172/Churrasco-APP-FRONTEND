@@ -1,85 +1,20 @@
-angular.module('meuChurrascoApp', ['ngMaterial']);
+angular.module('meuChurrascoApp', ['ngRoute', 'ngMaterial'])
 
-angular.module('meuChurrascoApp').controller('MainCtrl', function MainCtrl($scope) {
-  var vm = this;
+.controller('MainCtrl', function MainCtrl($scope, $route, $routeParams, $location) {
+   
+})
 
-  vm.message = "olar, ta funcionando";
+.config(function ($routeProvider, $locationProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'components/home/home.html',
+      controller: 'HomeController'
+    })
 
-  $scope.currentNavItem = 'page1';
-
-  $scope.goto = function (page) {
-    console.log("Goto " + page);
-  }
-
-  
-
-
-  $scope.todos = [
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Novembro',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-  ];
-});
+    .otherwise({
+      redirectTo: '/'
+    });
+    
+  // configure html5 to get links working on jsfiddle
+  $locationProvider.html5Mode(true);
+})

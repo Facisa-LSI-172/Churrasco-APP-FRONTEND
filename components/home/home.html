@@ -1,0 +1,45 @@
+<md-content>
+  <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+
+    <md-tab label="Participando">
+      <md-content class="md-padding">
+        <md-content>
+          <md-list flex>
+            <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+              <div class="md-list-item-text date" layout="column">
+                <h1>18</h1>
+                <small>Agost.</small>
+              </div>
+              <div class="md-list-item-text" layout="column">
+                <h3>{{ item.nome }}</h3>
+                <p>{{ item.descricao }}</p>
+              </div>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </md-content>
+    </md-tab>
+
+
+    <md-tab label="Organizando">
+      <md-content class="md-padding">
+        <md-content>
+          <md-list flex>
+            <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+              <div class="md-list-item-text date" layout="column">
+                <h1>{{ item.dia }}</h1>
+                <small>{{ item.mes }}</small>
+              </div>
+              <div class="md-list-item-text" layout="column">
+                <h3>{{ item.nome }}</h3>
+                <p>{{ item.descricao }}</p>
+              </div>
+            </md-list-item>
+            <md-button class="md-primary md-fab md-fab-bottom-right">+</md-button>
+          </md-list>
+        </md-content>
+      </md-content>
+    </md-tab>
+
+  </md-tabs>
+</md-content>
