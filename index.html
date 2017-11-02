@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="meuChurrascoApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="" />
+  <title>Meu Churrasco APP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link href="css/styles.min.css" rel="stylesheet" media="screen" /> 
+</head>
+
+<body ng-controller="MainCtrl as vm">
+
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs>
+
+      <md-tab label="Participando">
+        <md-content class="md-padding">         
+
+          <md-content>
+            <md-list flex>
+              <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+                <div class="md-list-item-text date" layout="column">
+                  <h1>18</h1>
+                  <small>Agost.</small>                  
+                </div>
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ item.nome }}</h3>
+                  <p>{{ item.descricao }}</p>
+                </div>
+              </md-list-item>
+            </md-list>
+          </md-content>
+
+
+
+        </md-content>
+      </md-tab>
+
+
+      <md-tab label="Organizando">
+        <md-content class="md-padding">
+          <md-content>
+            <md-list flex>
+              <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+                <div class="md-list-item-text date" layout="column">
+                  <h1>18</h1>
+                  <small>Agost.</small>
+                </div>
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{ item.nome }}</h3>
+                  <p>{{ item.descricao }}</p>
+                </div>
+              </md-list-item>
+              <md-button class="md-primary md-fab md-fab-bottom-right">+</md-button>
+            </md-list>
+            
+          </md-content>
+
+
+          
+        </md-content>
+        
+      </md-tab>
+    </md-tabs>
+  </md-content>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- <script src="bower_components/angular/angular.min.js"></script> -->
+  <script src="app.js"></script>
+  <!-- <script src="components/c/c.component.js"></script> -->
+  <!-- <script src="components/c/c.service.js"></script> -->
+</body>
+</html>
