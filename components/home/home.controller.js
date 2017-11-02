@@ -24,54 +24,6 @@ angular.module('meuChurrascoApp')
       nome: 'Churrasco do Feriadão',
       descricao: "Celebrando a volta do namoro do amigo M..."
     },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
-    {
-      dia: '18',
-      mes: 'Agos.',
-      nome: 'Churrasco do Feriadão',
-      descricao: "Celebrando a volta do namoro do amigo M..."
-    },
   ];
 })
 
