@@ -31,6 +31,17 @@ angular.module('meuChurrascoApp', ['ngRoute', 'ngMaterial'])
       controller: 'EventoController'
     })
 
+    .when('/cadastro', {
+      templateUrl: 'components/cadastro/cadastro.html',
+      controller: 'CadastroController'
+    })
+
+    .when('/login', {
+      templateUrl: 'components/login/login.html',
+      controller: 'LoginController'
+    })
+
+
     .otherwise({
       redirectTo: '/'
     });
