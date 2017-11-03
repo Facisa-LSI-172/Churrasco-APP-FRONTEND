@@ -26,6 +26,11 @@ angular.module('meuChurrascoApp', ['ngRoute', 'ngMaterial'])
       controller: 'ContribuicoesController'
     })
 
+    .when('/evento', {
+      templateUrl: 'components/evento/evento.html',
+      controller: 'EventoController'
+    })
+
     .otherwise({
       redirectTo: '/'
     });

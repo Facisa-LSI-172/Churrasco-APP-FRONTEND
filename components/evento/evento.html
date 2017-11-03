@@ -1,0 +1,22 @@
+<md-toolbar md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <h3>
+      <span>Churrasco do Feriadão</span>
+    </h3>
+  </div>
+</md-toolbar>
+
+
+  <md-list>
+    <md-list-item class="md-2-line" ng-repeat="item in todos">
+      <div class="md-list-item-text">
+        <h3> {{ item.nome }} </h3>
+        <p> {{ item.contribuicao }} </p>
+      </div>
+      <md-button class="md-secondary md-icon-button">
+        <!-- <i class="material-icons">check</i> -->
+        <i class="material-icons">{{ item.confirmado ? 'check' : 'access_time' }}</i>
+      </md-button>
+    </md-list-item>
+
+  </md-list>
