@@ -4,7 +4,7 @@
     <md-tab label="Participando">
       <md-content class="md-padding">
         <md-content>
-          <md-list flex>
+          <md-list class="md-list-home" flex>
             <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
               <div class="md-list-item-text date" layout="column">
                 <h1>18</h1>
@@ -24,7 +24,7 @@
     <md-tab label="Organizando">
       <md-content class="md-padding">
         <md-content>
-          <md-list flex>
+          <md-list class="md-list-home" flex>
             <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
               <div class="md-list-item-text date" layout="column">
                 <h1>{{ item.dia }}</h1>
@@ -36,7 +36,7 @@
               </div>
             </md-list-item>
 
-            <md-button class="md-primary md-fab md-fab-bottom-right" href="/evento">+</md-button>
+            <md-button class="md-primary md-fab md-fab-bottom-right" href="/convidados">+</md-button>
           </md-list>
         </md-content>
       </md-content>

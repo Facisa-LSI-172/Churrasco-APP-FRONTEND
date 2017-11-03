@@ -14,7 +14,17 @@ angular.module('meuChurrascoApp', ['ngRoute', 'ngMaterial'])
     .when('/evento', {
       templateUrl: 'components/evento-form/evento-form.html',
       controller: 'EventoFormController'
-    })  
+    })
+
+    .when('/convidados', {
+      templateUrl: 'components/convidados/convidados.html',
+      controller: 'ConvidadosController'
+    })
+
+    .when('/contribuicoes', {
+      templateUrl: 'components/contribuicoes/contribuicoes.html',
+      controller: 'ContribuicoesController'
+    })
 
     .otherwise({
       redirectTo: '/'

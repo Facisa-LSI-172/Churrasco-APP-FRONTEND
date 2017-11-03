@@ -1,0 +1,35 @@
+<md-dialog aria-label="Convidar Amigos">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Adicionar Contribuição</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="material-icons">close</i>
+
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <md-content class="md-padding">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Nome</label>
+          <input ng-model="user.firstName">
+        </md-input-container>
+      </md-content>
+
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      
+      <span flex></span>
+      <md-button ng-click="cancel()">
+        Cancelar
+      </md-button>
+      <md-button ng-click="convidar()" style="margin-right:20px;">
+        Cadastrar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
