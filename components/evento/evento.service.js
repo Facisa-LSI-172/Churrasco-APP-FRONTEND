@@ -5,13 +5,7 @@ angular.module('meuChurrascoApp')
     const get_participantes_por_evento = "/participantes";
 
     getParticipantesPorEvento = function(id_evento){
-        $http.get( base_url + id_evento + get_participantes_por_evento).
-        then(function(response) {
-            return response.data;
-        },
-        function errorCallback(response) {
-            console.log('Erro ao buscar participantes do evento!');
-        });
+        return $http.get(base_url + id_evento + get_participantes_por_evento)
     }
 
 });

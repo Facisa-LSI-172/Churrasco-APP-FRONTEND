@@ -7,8 +7,8 @@
           <md-list class="md-list-home" flex>
             <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
               <div class="md-list-item-text date" layout="column">
-                <h1>18</h1>
-                <small>Agost.</small>
+                <h1>{{ retornaDiaData(item.data) }}</h1>
+                <small>{{ retornaMesData(item.data) }}</small>
               </div>
               <div class="md-list-item-text" layout="column">
                 <h3>{{ item.nome }}</h3>
@@ -27,8 +27,8 @@
           <md-list class="md-list-home" flex>
             <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
               <div class="md-list-item-text date" layout="column">
-                <h1>{{ item.dia }}</h1>
-                <small>{{ item.mes }}</small>
+                <h1>{{ retornaDiaData(item.data) }}</h1>
+                <small>{{ retornaMesData(item.data) }}</small>
               </div>
               <div class="md-list-item-text" layout="column">
                 <h3>{{ item.nome }}</h3>

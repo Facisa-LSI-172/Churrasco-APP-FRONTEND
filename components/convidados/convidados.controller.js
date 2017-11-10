@@ -1,5 +1,5 @@
 angular.module('meuChurrascoApp')
-  .controller('ConvidadosController', function ($scope, $routeParams, $mdDialog) {
+  .controller('ConvidadosController', function ($scope, $routeParams, $mdDialog, ConvidadosService) {
     var vm = this;
 
     $scope.showTabDialog = function (ev) {
@@ -66,50 +66,7 @@ angular.module('meuChurrascoApp')
       ];
     }
 
-    $scope.todos = [
-      {
-        nome: 'Marcelo Brito',
-        email: 'marcelobritowd95@gmail.com',
-        confirmado: false
-      },
-      {
-        nome: 'Rafael Oliveira',
-        email: 'rafael@gmail.com',
-        confirmado: false
-      },
-      {
-        nome: 'Magno Dantas',
-        email: 'magno@sony.com',
-        confirmado: true
-      },
-      {
-        nome: 'Davi Leal',
-        email: 'davileal@hotmail.com',
-        confirmado: true
-      },
-      {
-        nome: 'Marcelo Brito',
-        email: 'marcelobritowd95@gmail.com',
-        confirmado: false
-      },
-      {
-        nome: 'Rafael Oliveira',
-        email: 'rafael@gmail.com',
-        confirmado: false
-      },
-      {
-        nome: 'Magno Dantas',
-        email: 'magno@sony.com',
-        confirmado: true
-      },
-      {
-        nome: 'Davi Leal',
-        email: 'davileal@hotmail.com',
-        confirmado: true
-      }      
-    ];
-
-   
+    $scope.todos = ConvidadosService.getTodosUsuarios();
   })
 
 
