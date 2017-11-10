@@ -3,4 +3,4 @@ angular.module('meuChurrascoApp')
     var vm = this;
 
    
-  })
+})
