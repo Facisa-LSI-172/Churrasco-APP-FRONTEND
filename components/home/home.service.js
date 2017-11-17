@@ -1,11 +1,31 @@
 angular.module('meuChurrascoApp')
-    .service('HomeService', function ($http) {
+    .service('HomeService', function ($http, appConstants) {
 
-    const base_url = "http://192.168.34.118:8080/meuchurrascoapp/webapi/";
-    const get_all_eventos = "evento/getall";
-    const et_one_evento = "evento/get/";
+    this.getTodosEventos = function () {
+        $http.get(appConstants.URL + 'evento/getall')
+            .then(function (response) {
+                return response.data;
 
-    this.getTodosEventos = function() {
-        return $http.get( base_url + get_all_eventos )
+            }).catch(function (e) {
+                console.log('Error: ', e);
+                throw e;
+
+            }).finally(function () {
+                console.log('This finally block');
+            });
+    }
+
+    this.getUmEvento = function (id) {
+        $http.get(appConstants.URL + 'evento/get/' + id)
+            .then(function (response) {
+                return response.data;
+
+            }).catch(function (e) {
+                console.log('Error: ', e);
+                throw e;
+
+            }).finally(function () {
+                console.log('This finally block');
+            });
     }
 });
