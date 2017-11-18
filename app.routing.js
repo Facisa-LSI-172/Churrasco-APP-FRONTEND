@@ -1,7 +1,7 @@
 angular.module('meuChurrascoApp')
 .config(function ($routeProvider, $locationProvider) {
   $routeProvider
-    .when('/', {
+    .when('/home', {
       templateUrl: 'components/home/home.html',
       controller: 'HomeController'
     })
@@ -31,7 +31,7 @@ angular.module('meuChurrascoApp')
       controller: 'CadastroController'
     })
 
-    .when('/login', {
+    .when('/', {
       templateUrl: 'components/login/login.html',
       controller: 'LoginController'
     })
