@@ -1,11 +1,17 @@
 angular.module('meuChurrascoApp')
-.service('EventoService', function () {
+    .service('EventoService', function ($http, appConstants) {
 
-    const base_url = "http://127.0.0.1:8080/churrascoapp/webapi/evento/";
-    const get_participantes_por_evento = "/participantes";
+    this.getParticipantesPorEvento = function(id_evento){
+        return $http.get(appConstants.URL + '/evento/participantes/' + id_evento)
+            .then(function (response) {
+                return response.data;
 
-    getParticipantesPorEvento = function(id_evento){
-        return $http.get(base_url + id_evento + get_participantes_por_evento)
+            }).catch(function (e) {
+                console.log('Error: ', e);
+                throw e;
+
+            }).finally(function () {
+                console.log('This finally block');
+            });
     }
-
 });

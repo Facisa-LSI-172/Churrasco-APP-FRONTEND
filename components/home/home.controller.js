@@ -4,10 +4,8 @@ angular.module('meuChurrascoApp')
 
   $scope.params = $routeParams;
 
-  HomeService.getTodosEventos().then(function (response) {
-    $scope.todos = response.data;
-    console.log($scope.todos[0].data);
-  });
+  $scope.eventos = HomeService.getTodosEventos();
+  
 
   $scope.retornaDiaData = function(item) {
     let data = new Date(item);

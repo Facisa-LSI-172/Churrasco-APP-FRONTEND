@@ -1,9 +1,9 @@
 angular.module('meuChurrascoApp')
-  .controller('EventoController', function ($scope, $routeParams, $mdDialog) {
+  .controller('EventoController', function ($scope, $routeParams, $mdDialog, EventoService) {
     var vm = this;
-
-
-    $scope.participantes = getParticipantesPorEvento(id_evento);
+    $scope.idEvento = 1;
+    
+    $scope.participantes = EventoService.getParticipantesPorEvento(idEvento);
 
     // $scope.todos = [
     //   {
