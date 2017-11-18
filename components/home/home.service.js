@@ -4,6 +4,22 @@ angular.module('meuChurrascoApp')
     this.getTodosEventos = function () {
         $http.get(appConstants.URL + 'evento/getall')
             .then(function (response) {
+                console.log(response.data);
+                return response.data;
+
+            }).catch(function (e) {
+                console.log('Error: ', e);
+                throw e;
+
+            }).finally(function () {
+                console.log('This finally block');
+            });
+    }
+
+    this.getEventosOrganizando = function (idUsuario) {
+        $http.get(appConstants.URL + 'evento/get/' + idUsuario)
+            .then(function (response) {
+                console.log(response.data)
                 return response.data;
 
             }).catch(function (e) {
