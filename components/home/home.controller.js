@@ -3,24 +3,14 @@ angular.module('meuChurrascoApp')
   var vm = this;
 
   $scope.params = $routeParams;
-  $scope.eventos = [];
-  $scope.eventosOrganizando = [];
 
-  setTimeout(()=>{
-    $scope.eventos = HomeService.getTodosEventos()
-    console.log('todos eventos', $scope.eventos)
-  },
-  1000
-  );
+  HomeService.getTodosEventos().then(function (data) {
+    $scope.eventos = data;
+  });  
 
-  setTimeout(() => {
-    $scope.eventosOrganizando = HomeService.getEventosOrganizando(LoginService.getUsuario().id);
-    console.log('organizando', $scope.eventosOrganizando);
-
-  }, 1000)
-
-  
-  
+  HomeService.getEventosOrganizando(LoginService.getUsuario().id).then(function(data){
+    $scope.eventosOrganizando = data;
+  });  
 
 
   $scope.retornaDiaData = function(item) {
