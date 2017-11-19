@@ -25,7 +25,7 @@
       <md-content class="md-padding">
         <md-content>
           <md-list class="md-list-home" flex>
-            <md-list-item class="md-3-line" ng-repeat="item in eventosOrganizando" ng-click="null">
+            <md-list-item class="md-3-line" ng-repeat="item in eventosOrganizando" ng-click="visualizarEvento(item.id)">
               <div class="md-list-item-text date" layout="column">
                 <h1>{{ retornaDiaData(item.data) }}</h1>
                 <small>{{ retornaMesData(item.data) }}</small>
@@ -36,7 +36,7 @@
               </div>
             </md-list-item>
 
-            <md-button class="md-primary md-fab md-fab-bottom-right" href="/evento">+</md-button>
+            <md-button class="md-primary md-fab md-fab-bottom-right">+</md-button>
           </md-list>
         </md-content>
       </md-content>

@@ -1,5 +1,5 @@
 angular.module('meuChurrascoApp')
-  .controller('HomeController', function ($scope, $routeParams, $timeout, HomeService, LoginService) {
+  .controller('HomeController', function ($scope, $routeParams, $timeout, $location, HomeService, LoginService) {
   var vm = this;
 
   $scope.params = $routeParams;
@@ -12,6 +12,11 @@ angular.module('meuChurrascoApp')
     $scope.eventosOrganizando = data;
   });  
 
+
+  $scope.visualizarEvento = function (idEvento) {
+    console.log(idEvento)
+    $location.path('/convidados/' + idEvento)
+  }
 
   $scope.retornaDiaData = function(item) {
     let data = new Date(item);

@@ -29,26 +29,6 @@ angular.module('meuChurrascoApp')
                 }).finally(function () {
                     console.log('This finally block');
                 });
-        },
-
-        getUmEvento: function (id) {
-            return $http.get(appConstants.URL + 'evento/get/' + id)
-                .then(function (response) {
-                    return response.data;
-
-                }).catch(function (e) {
-                    console.log('Error: ', e);
-                    throw e;
-
-                }).finally(function () {
-                    console.log('This finally block');
-                });
         }
-
-
-    }
-    
-
-    
-    
+    }    
 });
