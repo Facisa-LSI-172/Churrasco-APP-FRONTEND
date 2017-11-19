@@ -3,7 +3,6 @@ angular.module('meuChurrascoApp')
     var vm = this;
 
     $scope.idEvento = $routeParams.id;
-    console.log('idevento', $scope.idEvento);
     
     EventoService.getUmEvento($scope.idEvento).then(function (data) {
       console.log(data);

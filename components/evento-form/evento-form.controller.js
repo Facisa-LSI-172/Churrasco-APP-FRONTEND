@@ -25,11 +25,25 @@ angular.module('meuChurrascoApp')
     }
 
     $scope.visualizarConvidados = function () {
-      $location.path('/convidados')
+      $location.path('/convidados/' + $scope.idEvento)
     }
 
     $scope.visualizarContribuicoes = function () {
       $location.path('/contribuicoes')
+    }
+
+    $scope.salvarOuEditar = function () {
+      if ($scope.idEvento !== undefined) {
+        EventoService.atualizarEvento($scope.evento).then(function (data) {
+          $scope.evento = data;
+        })
+
+      } else {
+        EventoService.criarNovoEvento($scope.evento).then(function (data) {
+          $scope.evento = data;
+        })
+
+      }
     }
 
   })
