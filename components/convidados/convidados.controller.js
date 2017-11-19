@@ -70,7 +70,7 @@ angular.module('meuChurrascoApp')
     $scope.idEvento = $routeParams.id;
     console.log('idevento', $scope.idEvento);
 
-    EventoService.getParticipantesPorEvento($scope.idEvento).then(function (data) {
+    EventoService.getUmEvento($scope.idEvento).then(function (data) {
       console.log(data);
       $scope.convidados = data.listaParticipantes;
     });
