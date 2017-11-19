@@ -1,5 +1,5 @@
 angular.module('meuChurrascoApp')
-  .controller('ConvidadosController', function ($scope, $routeParams, $mdDialog, ConvidadosService) {
+  .controller('ConvidadosController', function ($scope, $routeParams, $mdDialog, ConvidadosService, EventoService) {
     var vm = this;
 
     $scope.showTabDialog = function (ev) {
@@ -66,7 +66,14 @@ angular.module('meuChurrascoApp')
       ];
     }
 
-    $scope.todos = ConvidadosService.getTodosUsuarios();
+
+    $scope.idEvento = $routeParams.id;
+    console.log('idevento', $scope.idEvento);
+
+    EventoService.getParticipantesPorEvento($scope.idEvento).then(function (data) {
+      console.log(data);
+      $scope.convidados = data.listaParticipantes;
+    });
   })
 
 
