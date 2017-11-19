@@ -2,17 +2,12 @@ angular.module('meuChurrascoApp')
   .controller('LoginController', function ($scope, $routeParams, $http, $location, LoginService, Usuario) {
     var vm = this;
 
-    $scope.getUsuario = function () {
-      let usuarioLocal = localStorage.getItem('usuario');
-      return JSON.parse(usuarioLocal);
-    }
-
     $scope.isLogado = function () {
-      return $scope.getUsuario() !== null;
+      return LoginService.getUsuario() !== null;
     }
 
-    if ($scope.getUsuario() !== null) {
-      $scope.usuario = new Usuario($scope.getUsuario().nome, $scope.getUsuario().email, null, $scope.getUsuario().token);
+    if (LoginService.getUsuario() !== null) {
+      $scope.usuario = new Usuario(LoginService.getUsuario().nome, LoginService.getUsuario().email, null, LoginService.getUsuario().token);
     } else {
       $scope.usuario = new Usuario();
     } 
@@ -21,9 +16,7 @@ angular.module('meuChurrascoApp')
       $scope.error = null;
 
       LoginService.login($scope.usuario.email, $scope.usuario.senha).then(function (data) {
-        let usuarioLocal = JSON.stringify(data);
-        localStorage.setItem('usuario', usuarioLocal)
-        $http.defaults.headers.common.Authorization = 'Bearer ' + data.token;
+        LoginService.setUsuario(data);
 
         if ($scope.isLogado()) {
           $location.path('/home');

@@ -10,8 +10,18 @@ angular.module('meuChurrascoApp')
         }).then(function (response) {
           return response.data;
         });
+      },
+
+      setUsuario: function (data) {
+        let usuarioLocal = JSON.stringify(data);
+        localStorage.setItem('usuario', usuarioLocal)
+        $http.defaults.headers.common.Authorization = 'Bearer ' + data.token;
+      },
+
+      getUsuario: function () {
+        let usuarioLocal = localStorage.getItem('usuario');
+        return JSON.parse(usuarioLocal);
       }
     };
-  
 
 });
