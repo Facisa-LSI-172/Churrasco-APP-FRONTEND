@@ -2,8 +2,8 @@ angular.module('meuChurrascoApp')
     .service('HomeService', function ($http, appConstants) {
 
     return {
-        getTodosEventos: function () {
-            return $http.get(appConstants.URL + 'evento/getall')
+        getEventosParticipando: function (idUsuario) {
+            return $http.get(appConstants.URL + 'evento/participante/' + idUsuario)
                 .then(function (response) {
                     console.log(response.data);
                     return response.data;
@@ -13,7 +13,7 @@ angular.module('meuChurrascoApp')
                     throw e;
 
                 }).finally(function () {
-                    console.log('This finally block');
+                    // console.log('This finally block');
                 });
         },
 
@@ -27,7 +27,7 @@ angular.module('meuChurrascoApp')
                     throw e;
 
                 }).finally(function () {
-                    console.log('This finally block');
+                    // console.log('This finally block');
                 });
         }
     }    

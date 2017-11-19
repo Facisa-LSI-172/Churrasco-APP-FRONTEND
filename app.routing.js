@@ -11,6 +11,11 @@ angular.module('meuChurrascoApp')
       controller: 'EventoFormController'
     })
 
+    .when('/evento-form/:id', {
+      templateUrl: 'components/evento-form/evento-form.html',
+      controller: 'EventoFormController'
+    })
+
     .when('/convidados/:id', {
       templateUrl: 'components/convidados/convidados.html',
       controller: 'ConvidadosController'

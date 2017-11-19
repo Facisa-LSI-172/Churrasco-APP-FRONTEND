@@ -13,7 +13,7 @@ angular.module('meuChurrascoApp')
               throw e;
 
           }).finally(function () {
-              console.log('This finally block');
+            //   console.log('This finally block');
           });
       }
     }

@@ -1,21 +1,27 @@
 angular.module('meuChurrascoApp')
   .controller('HomeController', function ($scope, $routeParams, $timeout, $location, HomeService, LoginService) {
   var vm = this;
-
   $scope.params = $routeParams;
 
-  HomeService.getTodosEventos().then(function (data) {
-    $scope.eventos = data;
-  });  
 
   HomeService.getEventosOrganizando(LoginService.getUsuario().id).then(function(data){
     $scope.eventosOrganizando = data;
   });  
 
+  HomeService.getEventosParticipando(LoginService.getUsuario().id).then(function (data) {
+    $scope.eventosParticipando = data;
+  });
+
+  $scope.verEventoParticipando = function (idEvento) {
+    $location.path('/evento/' + idEvento);
+  }
 
   $scope.visualizarEvento = function (idEvento) {
-    console.log(idEvento)
-    $location.path('/convidados/' + idEvento)
+    $location.path('/evento-form/' + idEvento);
+  }
+
+  $scope.cadastrarEvento = function () {
+    $location.path('/evento-form'); 
   }
 
   $scope.retornaDiaData = function(item) {
