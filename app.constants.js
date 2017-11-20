@@ -1,3 +1,3 @@
 angular.module('meuChurrascoApp').constant('appConstants', {
-  URL: 'http://af8c4d69.ngrok.io/meuchurrascoapp/webapi/'
+  URL: 'http://e4a7a82a.ngrok.io/meuchurrascoapp/webapi/'
 });

@@ -15,7 +15,7 @@
       <md-content class="md-padding">
         <md-input-container class="md-block" flex-gt-sm>
           <label>Nome</label>
-          <input ng-model="user.firstName">
+          <input ng-model="contribuicao.nome">
         </md-input-container>
       </md-content>
 
@@ -27,7 +27,7 @@
       <md-button ng-click="cancel()">
         Cancelar
       </md-button>
-      <md-button ng-click="convidar()" style="margin-right:20px;">
+      <md-button ng-click="cadastrarContribuicao(contribuicao.nome)" style="margin-right:20px;">
         Cadastrar
       </md-button>
     </md-dialog-actions>

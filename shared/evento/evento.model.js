@@ -1,6 +1,7 @@
 angular.module('meuChurrascoApp').factory('Evento', function () {
 
-  function Evento(nome, descricao, local, data, idOrganizador, listaParticipantes) {
+  function Evento(id, nome, descricao, local, data, idOrganizador, listaParticipantes) {
+    this.id = id;
     this.nome = nome;
     this.descricao = descricao;
     this.local = local;

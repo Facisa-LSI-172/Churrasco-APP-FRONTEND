@@ -29,17 +29,17 @@
     </md-input-container>
 
     <div class="container-contadores" ng-show="{{ eventoExiste }}">
-      <a class="item-contador" ng-click="visualizarConvidados(idEvento)">
+      <a class="item-contador" ng-click="visualizarConvidados(evento.id)">
         <div class="number-cont">
           <small class="number">{{ qtdConvidados }}</small>
         </div>
         <span>Convidados</span>
       </a>
 
-      <a class="item-contador" ng-click="visualizarContribuicoes()">
+      <a class="item-contador" ng-click="visualizarContribuicoes(evento.id)">
         <div class="number-cont">
           <small class="number">{{ qtdContribuicoes }}</small>
-        </div>        
+        </div>
         <span>Contribuições</span>
       </a>
 

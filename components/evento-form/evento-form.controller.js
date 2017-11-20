@@ -5,7 +5,6 @@ angular.module('meuChurrascoApp')
     $scope.evento = new Evento();
     $scope.idEvento = $routeParams.id;
     $scope.eventoExiste = false;
-
     $scope.usuario = LoginService.getUsuario();
 
 
@@ -31,8 +30,8 @@ angular.module('meuChurrascoApp')
       $location.path('/convidados/' + idEvento)
     }
 
-    $scope.visualizarContribuicoes = function () {
-      $location.path('/contribuicoes')
+    $scope.visualizarContribuicoes = function (idEvento) {
+      $location.path('/contribuicoes/' + idEvento)
     }
 
     $scope.salvarOuEditar = function () {
@@ -49,7 +48,7 @@ angular.module('meuChurrascoApp')
       } else {
         EventoService.criarNovoEvento($scope.evento, $scope.usuario).then(function (data) {
           $scope.evento = data;
-          $scope.visualizarConvidados($scope.idEvento);
+          $scope.visualizarContribuicoes($scope.evento.id);
         })
 
       }
