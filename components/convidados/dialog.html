@@ -15,14 +15,14 @@
       <md-content class="md-padding">
         <md-input-container class="md-block" flex-gt-sm>
           <label>E-mail</label>
-          <input ng-model="theMax">
+          <input ng-model="convidado.email">
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm="">
           <label>Contribuição</label>
           <md-select ng-model="form.nome">
-            <md-option ng-repeat="item in contribuicoes" value="{{item.nome}}">
-              {{ item.nome }}
+            <md-option ng-repeat="item in contribuicoes" value="{{convidado.contribuicao}}">
+              {{ item.contribuicao }}
             </md-option>
           </md-select>
         </md-input-container>

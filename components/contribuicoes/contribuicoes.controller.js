@@ -1,5 +1,5 @@
 angular.module('meuChurrascoApp')
-  .controller('ContribuicoesController', function ($scope, $routeParams, $mdDialog) {
+  .controller('ContribuicoesController', function ($scope, $routeParams, $mdDialog, ContribuicoesService) {
     var vm = this;
 
     $scope.showTabDialog = function (ev) {
@@ -67,6 +67,19 @@ angular.module('meuChurrascoApp')
         confirmado: false
       }
     ];
+
+    $scope.idEvento = $routeParams.id;
+
+    EventoService.getUmEvento($scope.idEvento).then(function (data) {
+      $scope.evento = new Evento(data);
+      $scope.convidados = data.listaParticipantes;
+    });
+
+    // $scope.
+
+    ContribuicoesService.getContribuicoes($scope.evento).then(function(data){
+      $scope.contribuicoes = data;
+    })
   })
 
 

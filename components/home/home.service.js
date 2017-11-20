@@ -5,7 +5,6 @@ angular.module('meuChurrascoApp')
         getEventosParticipando: function (idUsuario) {
             return $http.get(appConstants.URL + 'evento/participante/' + idUsuario)
                 .then(function (response) {
-                    console.log(response.data);
                     return response.data;
 
                 }).catch(function (e) {

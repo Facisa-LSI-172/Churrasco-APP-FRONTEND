@@ -1,7 +1,7 @@
 <md-toolbar md-scroll-shrink>
   <div class="md-toolbar-tools">
     <h3>
-      <span>Criar/Editar Evento</span>
+      <span>{{ eventoExiste ? 'Edição de Evento' : 'Criação de Evento' }}</span>
     </h3>
   </div>
 </md-toolbar>
@@ -9,39 +9,43 @@
 <md-card>
   <md-content class="md-padding">
     <md-input-container class="md-block" flex-gt-sm>
-      <label>Nome {{ vm.teste }}</label>
-      <input ng-model="user.firstName">
+      <label>Nome</label>
+      <input ng-model="evento.nome">
     </md-input-container>
 
     <md-input-container class="md-block" flex-gt-sm>
       <label>Descrição</label>
-      <input ng-model="theMax">
+      <input ng-model="evento.descricao">
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Local</label>
+      <input ng-model="evento.local">
     </md-input-container>
 
     <md-input-container class="md-block" flex-gt-sm>
       <label>Data</label>
-      <md-datepicker ng-model="user.submissionDate"></md-datepicker>
+      <md-datepicker ng-model="getDataFormatada"></md-datepicker>
     </md-input-container>
 
-
-    <div class="container-contadores">
-      <a class="item-contador" href="/convidados">
+    <div class="container-contadores" ng-show="{{ eventoExiste }}">
+      <a class="item-contador" ng-click="visualizarConvidados(idEvento)">
         <div class="number-cont">
-          <small class="number">5</small>
+          <small class="number">{{ qtdConvidados }}</small>
         </div>
         <span>Convidados</span>
       </a>
 
-      <a class="item-contador" href="/contribuicoes">
+      <a class="item-contador" ng-click="visualizarContribuicoes()">
         <div class="number-cont">
-          <small class="number">10</small>
+          <small class="number">{{ qtdContribuicoes }}</small>
         </div>        
         <span>Contribuições</span>
       </a>
 
     </div>
 
-    <md-button class="md-raised md-primary">Salvar</md-button>
+    <md-button class="md-raised md-primary" ng-click="salvarOuEditar()">{{ eventoExiste ? 'Salvar Evento' : 'Criar Evento' }}</md-button>
   </md-content>
 </md-card>
 
