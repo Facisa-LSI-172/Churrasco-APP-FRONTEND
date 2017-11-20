@@ -1,5 +1,5 @@
 angular.module('meuChurrascoApp')
-  .controller('CadastroController', function ($scope, $routeParams, $mdDialog, Usuario, CadastroService, LoginService) {
+  .controller('CadastroController', function ($scope, $routeParams, $location, $mdDialog, Usuario, CadastroService, LoginService) {
     var vm = this;
 
     $scope.usuario = new Usuario();
@@ -12,12 +12,8 @@ angular.module('meuChurrascoApp')
       }
 
       CadastroService.cadastrarUsuario($scope.usuario).then(function (data) {
-        if (data.status === 200) {
-          $scope.showAlert('Bem Vindo', 'Conta criada com sucesso, você será redirecionado para a pagina principal', 'Entendi');
-          $scope.efetuarLogin();
-        } else {
-          console.log('Deu ruim!')
-        }
+        $scope.showAlert('Bem Vindo', 'Conta criada com sucesso, você será redirecionado para a pagina principal', 'Entendi');
+        $scope.efetuarLogin();
       })
     }
 
@@ -51,5 +47,7 @@ angular.module('meuChurrascoApp')
       return LoginService.getUsuario() !== null;
     }
 
-   
+    if ($scope.isLogado()) {
+      $location.path('/home');
+    }   
 })

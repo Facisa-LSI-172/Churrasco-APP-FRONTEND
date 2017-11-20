@@ -3,12 +3,14 @@ angular.module('meuChurrascoApp')
 
 
     return {
-      atualizarEvento: function (evento) {
-        return $http.put(appConstants.URL + 'evento/atualizar/', {
+      atualizarEvento: function (evento, usuario) {
+        return $http.put(appConstants.URL + 'evento/atualizar', {
+          id: evento.id,
           nome: evento.nome,
           descricao: evento.descricao,
           local: evento.local,
-          data: evento.data
+          data: evento.data,
+          organizador: usuario
 
         }).then(function (response) {
           return response.data;
@@ -22,12 +24,13 @@ angular.module('meuChurrascoApp')
         });
       },
 
-      criarNovoEvento: function (evento) {
-        return $http.post(appConstants.URL + 'evento/cadastrar/', {
+      criarNovoEvento: function (evento, usuario) {
+        return $http.post(appConstants.URL + 'evento/cadastrar', {
           nome: evento.nome,
           descricao: evento.descricao,
           local: evento.local,
-          data: evento.data
+          data: evento.data,
+          organizador: usuario          
 
         }).then(function (response) {
           return response.data;
