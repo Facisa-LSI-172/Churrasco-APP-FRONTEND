@@ -16,6 +16,31 @@ angular.module('meuChurrascoApp')
       }).finally(function () {
         //   console.log('This finally block');
       });
+    },
+
+    pegarConvidadosSalvosLocalmente: function () {
+      return JSON.parse(localStorage.getItem("convidadosDeEventos"))
+    },
+
+    salvarContribuicaoLocalmente: function (idEvento, convidado) {
+      let convidadoObj = {
+        convidado: {},
+        evento: ""
+      };
+
+
+      let listaLocais = [];
+
+      if (this.pegarConvidadosSalvosLocalmente()) {
+        listaLocais = this.pegarConvidadosSalvosLocalmente();
+      }
+      let qtdItensLocais = listaLocais.length;
+
+      contribuicaoObj.evento = idEvento;
+      contribuicaoObj.convidado = convidado;
+      listaLocais.push(convidadoObj);
+
+      localStorage.setItem("convidadosDeEventos", JSON.stringify(listaLocais))
     }
   }  
 });

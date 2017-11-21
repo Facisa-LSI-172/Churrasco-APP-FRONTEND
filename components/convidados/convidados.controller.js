@@ -19,7 +19,7 @@ angular.module('meuChurrascoApp')
         });
     };
 
-    function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $mdDialog, ContribuicoesService) {
       $scope.hide = function () {
         $mdDialog.hide();
       };
@@ -32,40 +32,8 @@ angular.module('meuChurrascoApp')
         $mdDialog.hide(answer);
       };
 
-      $scope.contribuicoes = [
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        },
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        },
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        },
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        }
-      ];
+      $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente();
+
     }
 
 
@@ -85,10 +53,6 @@ angular.module('meuChurrascoApp')
         console.log(data)
       })
     }
-
-    // ContribuicoesService.
-
-
   })
 
 

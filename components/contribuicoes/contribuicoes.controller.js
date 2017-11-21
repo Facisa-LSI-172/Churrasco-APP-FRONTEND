@@ -35,6 +35,7 @@ angular.module('meuChurrascoApp')
 
       $scope.cadastrarContribuicao = function (contribuicao) {
         ContribuicoesService.salvarContribuicaoLocalmente($scope.idEvento, contribuicao);
+        $scope.hide();
       }
     }
 
@@ -82,6 +83,8 @@ angular.module('meuChurrascoApp')
       $scope.evento = new Evento(data);
       $scope.convidados = data.listaParticipantes;
     });
+
+    $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente();
 
 
     // ContribuicoesService.getContribuicoes($scope.idEvento).then(function (data) {
