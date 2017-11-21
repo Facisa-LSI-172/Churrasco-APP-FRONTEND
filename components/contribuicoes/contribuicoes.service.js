@@ -25,16 +25,29 @@ angular.module('meuChurrascoApp')
     },
 
     pegarContribuicoesSalvasLocalmente: function () {
-      return JSON.parse(localStorage.getItem("contribuicoes"))
+      return JSON.parse(localStorage.getItem("contribuicoesDeEventos"))
     },
 
-    salvarContribuicaoLocalmente: function (contribuicao) {
-      let lista = [];
-      lista.push(this.pegarContribuicoesSalvasLocalmente());
-      lista.push(contribuicao);
+    salvarContribuicaoLocalmente: function (idEvento, contribuicao) {
+      let contribuicaoObj = {
+        nome: "",
+        evento: ""
+      };
 
-      localStorage.setItem("contribuicoes", JSON.stringify(lista))
-    }    
+
+      let listaLocais = [];
+
+      if (this.pegarContribuicoesSalvasLocalmente()) {
+        listaLocais = this.pegarContribuicoesSalvasLocalmente();
+      }
+      let qtdItensLocais = listaLocais.length;
+      
+      contribuicaoObj.evento = idEvento;
+      contribuicaoObj.nome = contribuicao;
+      listaLocais.push(contribuicaoObj);
+
+      localStorage.setItem("contribuicoesDeEventos", JSON.stringify(listaLocais))
+    }
   }
 
 });

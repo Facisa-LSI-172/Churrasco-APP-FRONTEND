@@ -31,10 +31,10 @@ angular.module('meuChurrascoApp')
         $mdDialog.hide(answer);
       };
 
+      $scope.idEvento = $routeParams.id;
+
       $scope.cadastrarContribuicao = function (contribuicao) {
-        ContribuicoesService.salvarContribuicaoLocalmente(contribuicao).then(function () {
-          console.log("retornou")
-        });
+        ContribuicoesService.salvarContribuicaoLocalmente($scope.idEvento, contribuicao);
       }
     }
 
