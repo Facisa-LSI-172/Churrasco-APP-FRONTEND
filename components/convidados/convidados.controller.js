@@ -32,7 +32,8 @@ angular.module('meuChurrascoApp')
         $mdDialog.hide(answer);
       };
 
-      $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente();
+      $scope.idEvento = $routeParams.id;     
+      $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente($scope.idEvento);
 
     }
 
@@ -47,11 +48,14 @@ angular.module('meuChurrascoApp')
 
     $scope.convidado = new Convidado();
 
-    $scope.convidar = function () {
-      $scope.evento.listaParticipantes.push($scope.convidado);
-      ConvidadosService.convidarUmAmigo($scope.evento).then(function(data){
-        console.log(data)
-      })
+    $scope.cadastrarConvidado = function (convidado) {
+      ConvidadosService.salvarConvidadoLocalmente($scope.idEvento, convidado);
+
+
+      // $scope.evento.listaParticipantes.push($scope.convidado);
+      // ConvidadosService.convidarUmAmigo($scope.evento).then(function(data){
+      //   console.log(data)
+      // })
     }
   })
 

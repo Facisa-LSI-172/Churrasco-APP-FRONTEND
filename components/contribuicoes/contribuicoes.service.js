@@ -24,8 +24,17 @@ angular.module('meuChurrascoApp')
         });
     },
 
-    pegarContribuicoesSalvasLocalmente: function () {
-      return JSON.parse(localStorage.getItem("contribuicoesDeEventos"))
+    pegarContribuicoesSalvasLocalmente: function (idEvento) {
+      let itemsLocais = JSON.parse(localStorage.getItem("contribuicoesDeEventos"))
+      let pertencemAoEvento = [];
+
+      for (var i = 0; i < itemsLocais.length; i++) {
+        if (itemsLocais[i].evento === idEvento) {
+          pertencemAoEvento.push(itemsLocais[i])          
+        }
+      }
+
+      return pertencemAoEvento;
     },
 
     salvarContribuicaoLocalmente: function (idEvento, contribuicao) {
@@ -37,8 +46,8 @@ angular.module('meuChurrascoApp')
 
       let listaLocais = [];
 
-      if (this.pegarContribuicoesSalvasLocalmente()) {
-        listaLocais = this.pegarContribuicoesSalvasLocalmente();
+      if (this.pegarContribuicoesSalvasLocalmente(idEvento)) {
+        listaLocais = this.pegarContribuicoesSalvasLocalmente(idEvento);
       }
       let qtdItensLocais = listaLocais.length;
       

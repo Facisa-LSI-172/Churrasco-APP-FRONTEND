@@ -1,5 +1,5 @@
 angular.module('meuChurrascoApp')
-  .controller('ContribuicoesController', function ($scope, $routeParams, $mdDialog, ContribuicoesService, Evento, EventoService, Contribuicao) {
+  .controller('ContribuicoesController', function ($scope, $routeParams, $rootScope, $mdDialog, ContribuicoesService, Evento, EventoService, Contribuicao) {
     var vm = this;
 
     $scope.showTabDialog = function (ev) {
@@ -18,7 +18,7 @@ angular.module('meuChurrascoApp')
     };
 
 
-    function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $mdDialog, $rootScope, ContribuicoesService) {
       $scope.hide = function () {
         $mdDialog.hide();
       };
@@ -36,6 +36,7 @@ angular.module('meuChurrascoApp')
       $scope.cadastrarContribuicao = function (contribuicao) {
         ContribuicoesService.salvarContribuicaoLocalmente($scope.idEvento, contribuicao);
         $scope.hide();
+        $rootScope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente($scope.idEvento)
       }
     }
 
@@ -84,7 +85,7 @@ angular.module('meuChurrascoApp')
       $scope.convidados = data.listaParticipantes;
     });
 
-    $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente();
+    $rootScope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente($scope.idEvento);
 
 
     // ContribuicoesService.getContribuicoes($scope.idEvento).then(function (data) {

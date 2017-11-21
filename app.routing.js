@@ -31,12 +31,12 @@ angular.module('meuChurrascoApp')
         controller: 'EventoController'
       })
 
-      .when('/', {
+      .when('/cadastro', {
         templateUrl: 'components/cadastro/cadastro.html',
         controller: 'CadastroController'
       })
 
-      .when('/login', {
+      .when('/', {
         templateUrl: 'components/login/login.html',
         controller: 'LoginController'
       })

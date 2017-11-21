@@ -18,11 +18,11 @@ angular.module('meuChurrascoApp')
       });
     },
 
-    pegarConvidadosSalvosLocalmente: function () {
+    pegarConvidadosSalvosLocalmente: function (idEvento) {
       return JSON.parse(localStorage.getItem("convidadosDeEventos"))
     },
 
-    salvarContribuicaoLocalmente: function (idEvento, convidado) {
+    salvarConvidadoLocalmente: function (idEvento, convidado) {
       let convidadoObj = {
         convidado: {},
         evento: ""
@@ -31,8 +31,8 @@ angular.module('meuChurrascoApp')
 
       let listaLocais = [];
 
-      if (this.pegarConvidadosSalvosLocalmente()) {
-        listaLocais = this.pegarConvidadosSalvosLocalmente();
+      if (this.pegarConvidadosSalvosLocalmente(idEvento)) {
+        listaLocais = this.pegarConvidadosSalvosLocalmente(idEvento);
       }
       let qtdItensLocais = listaLocais.length;
 
