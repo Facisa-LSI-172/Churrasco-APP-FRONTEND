@@ -1,9 +1,10 @@
 angular.module('meuChurrascoApp').factory('Convidado', function () {
 
-  function Convidado(nome, email, contribuicao) {
+  function Convidado(nome, email, contribuicao, confirmado) {
     this.nome = nome;
     this.email = email;
-    this.contribuicao = contribuicao;
+    this.listaContribuicoes = [];
+    this.confirmado = confirmado;
   }
 
   Convidado.prototype = {

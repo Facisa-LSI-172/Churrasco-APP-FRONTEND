@@ -25,7 +25,7 @@
 
         <md-input-container class="md-block" flex-gt-sm="">
           <label>Contribuição</label>
-          <md-select ng-model="convidado.contribuicao">
+          <md-select ng-model="convidado.listaContribuicoes[0].nome">
             <md-option ng-repeat="item in contribuicoes" value="{{item.nome}}">
               {{ item.nome }}
             </md-option>

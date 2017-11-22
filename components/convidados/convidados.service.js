@@ -36,8 +36,10 @@ angular.module('meuChurrascoApp')
       }
       let qtdItensLocais = listaLocais.length;
 
-      contribuicaoObj.evento = idEvento;
-      contribuicaoObj.convidado = convidado;
+      convidadoObj.evento = idEvento;
+      convidadoObj.convidado = convidado;
+      convidadoObj.convidado.listaContribuicoes.push(convidado.listaContribuicoes);
+      convidadoObj.convidado.confirmado = false;
       listaLocais.push(convidadoObj);
 
       localStorage.setItem("convidadosDeEventos", JSON.stringify(listaLocais))

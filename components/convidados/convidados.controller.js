@@ -1,6 +1,6 @@
 angular.module('meuChurrascoApp')
   .controller('ConvidadosController', function (
-    $scope, $routeParams, $mdDialog, ConvidadosService, EventoService, ContribuicoesService, Evento, Convidado
+    $scope, $rootScope, $routeParams, $mdDialog, ConvidadosService, EventoService, ContribuicoesService, Evento, Convidado
   ) {
     var vm = this;
 
@@ -19,7 +19,7 @@ angular.module('meuChurrascoApp')
         });
     };
 
-    function DialogController($scope, $mdDialog, ContribuicoesService) {
+    function DialogController($scope, $rootScope, $mdDialog, ContribuicoesService) {
       $scope.hide = function () {
         $mdDialog.hide();
       };
@@ -35,6 +35,20 @@ angular.module('meuChurrascoApp')
       $scope.idEvento = $routeParams.id;     
       $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente($scope.idEvento);
 
+      $scope.cadastrarConvidado = function (convidado) {
+        ConvidadosService.salvarConvidadoLocalmente($scope.idEvento, convidado);
+
+
+        // $scope.evento.listaParticipantes.push($scope.convidado);
+        // ConvidadosService.convidarUmAmigo($scope.evento).then(function(data){
+        //   console.log(data)
+        // })
+
+        $scope.hide();
+        $rootScope.pegarConvidados();
+
+      }
+
     }
 
 
@@ -45,18 +59,14 @@ angular.module('meuChurrascoApp')
       $scope.convidados = data.listaParticipantes;
     });
 
-
     $scope.convidado = new Convidado();
 
-    $scope.cadastrarConvidado = function (convidado) {
-      ConvidadosService.salvarConvidadoLocalmente($scope.idEvento, convidado);
 
-
-      // $scope.evento.listaParticipantes.push($scope.convidado);
-      // ConvidadosService.convidarUmAmigo($scope.evento).then(function(data){
-      //   console.log(data)
-      // })
+    $rootScope.pegarConvidados = function () {
+      $scope.convidados = ConvidadosService.pegarConvidadosSalvosLocalmente();
     }
+    
+    $rootScope.pegarConvidados();
   })
 
 
