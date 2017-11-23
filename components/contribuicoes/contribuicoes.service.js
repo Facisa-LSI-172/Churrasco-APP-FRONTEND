@@ -25,6 +25,9 @@ angular.module('meuChurrascoApp')
     },
 
     pegarContribuicoesSalvasLocalmente: function (idEvento) {
+      if (localStorage.getItem("contribuicoesDeEventos") == "[object Object]") {
+        return
+      }
       let itemsLocais = JSON.parse(localStorage.getItem("contribuicoesDeEventos"))
       let pertencemAoEvento = [];
 
@@ -61,6 +64,9 @@ angular.module('meuChurrascoApp')
     },
 
     getQtdContribuicoesLocal: function (idEvento) {
+      if (localStorage.getItem("contribuicoesDeEventos") == "[object Object]") {
+        return
+      }
       if (this.pegarContribuicoesSalvasLocalmente(idEvento).length > 0) {
         return this.pegarContribuicoesSalvasLocalmente(idEvento).length;  
       }

@@ -68,12 +68,22 @@ angular.module('meuChurrascoApp')
     $rootScope.pegarConvidados = function (id) {
       let itens = ConvidadosService.pegarConvidadosSalvosLocalmente(id);
       
+      if (itens == undefined) return;
+
       for (var i = 0; i < itens.length; i++) {
         $rootScope.convidados.push(itens[i]);
       }
     }
     
     $rootScope.pegarConvidados($scope.idEvento);
+
+    EventoService.getUmEvento($scope.idEvento).then(function (data) {
+      console.log(data);
+
+      for (var i = 0; i < data.listaParticipantes.length; i++) {
+        $rootScope.convidados.push(data.listaParticipantes[i]);        
+      }
+    });
   })
 
 
