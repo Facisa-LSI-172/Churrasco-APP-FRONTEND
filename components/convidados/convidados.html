@@ -10,8 +10,8 @@
   <md-list>
     <md-list-item class="md-2-line" ng-repeat="item in convidados">
       <div class="md-list-item-text">
-        <h3> {{ item.nome }} </h3>
-        <p> {{ item.email }}, {{ item.listaContribuicoes[0].nome }} + {{ item.listaContribuicoes[1].nome }} </p>
+        <h3> {{ item.convidado.nome }} <i style="font-size: 14px;">({{ item.convidado.email }})</i> </h3>
+        <p> {{ item.convidado.listaContribuicoes.nome }} </p>
       </div>
       <md-button class="md-secondary md-icon-button">
         <!-- <i class="material-icons">check</i> -->

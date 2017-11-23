@@ -22,6 +22,7 @@ angular.module('meuChurrascoApp')
         let usuarioLocal = localStorage.getItem('usuario');
         return JSON.parse(usuarioLocal);
       }
+      
     };
 
 });

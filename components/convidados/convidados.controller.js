@@ -1,5 +1,7 @@
 angular.module('meuChurrascoApp')
-  .controller('ConvidadosController', function ($scope, $routeParams, $mdDialog, ConvidadosService, EventoService, Evento) {
+  .controller('ConvidadosController', function (
+    $scope, $rootScope, $routeParams, $mdDialog, ConvidadosService, EventoService, ContribuicoesService, Evento, Convidado
+  ) {
     var vm = this;
 
     $scope.showTabDialog = function (ev) {
@@ -17,7 +19,7 @@ angular.module('meuChurrascoApp')
         });
     };
 
-    function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $rootScope, $mdDialog, ContribuicoesService) {
       $scope.hide = function () {
         $mdDialog.hide();
       };
@@ -30,64 +32,58 @@ angular.module('meuChurrascoApp')
         $mdDialog.hide(answer);
       };
 
-      $scope.contribuicoes = [
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        },
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        },
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        },
-        {
-          nome: '10 Kg de Carne de Sol',
-          confirmado: false
-        },
-        {
-          nome: '10 Litros de Refrigerante',
-          confirmado: false
-        }
-      ];
+      $scope.idEvento = $routeParams.id;     
+      $scope.contribuicoes = ContribuicoesService.pegarContribuicoesSalvasLocalmente($scope.idEvento);
+
+      $scope.cadastrarConvidado = function (convidado) {
+        ConvidadosService.salvarConvidadoLocalmente($scope.idEvento, convidado);
+
+
+        // $scope.evento.listaParticipantes.push($scope.convidado);
+        // ConvidadosService.convidarUmAmigo($scope.evento).then(function(data){
+        //   console.log(data)
+        // })
+
+        $scope.hide();
+        $rootScope.pegarConvidados($scope.idEvento);
+      }
+
     }
 
 
     $scope.idEvento = $routeParams.id;
+    $rootScope.convidados = [];
 
     EventoService.getUmEvento($scope.idEvento).then(function (data) {
       $scope.evento = new Evento(data);
-      $scope.convidados = data.listaParticipantes;
+
+      // if ($scope.evento.listaParticipantes !== null) {
+      //   $scope.convidados.push($scope.evento.listaParticipantes);
+      // }
     });
 
+    $scope.convidado = new Convidado();
 
-    $scope.convidado = {
-      email: "",
-      contribuicao: ""
+
+    $rootScope.pegarConvidados = function (id) {
+      let itens = ConvidadosService.pegarConvidadosSalvosLocalmente(id);
+      
+      if (itens == undefined) return;
+
+      for (var i = 0; i < itens.length; i++) {
+        $rootScope.convidados.push(itens[i]);
+      }
     }
+    
+    $rootScope.pegarConvidados($scope.idEvento);
 
-    $scope.convidar = function () {
-      $scope.evento.listaParticipantes.push($scope.convidado);
-      ConvidadosService.convidarUmAmigo($scope.evento).then(function(data){
-        console.log(data)
-      })
-    }
+    EventoService.getUmEvento($scope.idEvento).then(function (data) {
+      console.log(data);
 
-
+      for (var i = 0; i < data.listaParticipantes.length; i++) {
+        $rootScope.convidados.push(data.listaParticipantes[i]);        
+      }
+    });
   })
 
 

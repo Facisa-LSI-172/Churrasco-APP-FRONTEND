@@ -9,7 +9,7 @@ angular.module('meuChurrascoApp')
           nome: evento.nome,
           descricao: evento.descricao,
           local: evento.local,
-          data: evento.data,
+          listaParticipantes: evento.listaParticipantes,
           organizador: usuario
 
         }).then(function (response) {
@@ -48,6 +48,7 @@ angular.module('meuChurrascoApp')
       getUmEvento: function (idEvento) {
         return $http.get(appConstants.URL + 'evento/get/' + idEvento)
           .then(function (response) {
+              console.log(response.data);
               return response.data;
 
           }).catch(function (e) {
@@ -77,10 +78,11 @@ angular.module('meuChurrascoApp')
         return $http.get(appConstants.URL + 'evento/get/' + idEvento)
           .then(function (response) {
             let qtdContribuicoes = 0;
-            qtdContribuicoes += response.data.organizador.listaContribuicoes.length;
-            
+
             for (var i = 0; i < response.data.listaParticipantes.length; i++) {
-              qtdContribuicoes += response.data.listaParticipantes[i].listaContribuicoes.length;
+              if (response.data.listaParticipantes[i].listaContribuicoes) {
+                qtdContribuicoes += response.data.listaParticipantes[i].listaContribuicoes.length;
+              }
             }
 
             return qtdContribuicoes;

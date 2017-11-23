@@ -7,18 +7,18 @@
 </md-toolbar>
 
 
-  <md-list>
-    <md-list-item class="md-2-line" ng-repeat="item in todos">
-      <div class="md-list-item-text">
-        <h3> {{ item.nome }} </h3>
-      </div>
-      <md-button class="md-secondary md-icon-button">
-        <!-- <i class="material-icons">check</i> -->
-        <i class="material-icons">{{ item.confirmado ? 'check' : 'access_time' }}</i>
-      </md-button>
-    </md-list-item>
+<md-list>
+  <md-list-item class="md-2-line" ng-repeat="item in contribuicoes">
+    <div class="md-list-item-text">
+      <h3> {{ item.nome }} </h3>
+    </div>
+    <md-button class="md-secondary md-icon-button">
+      <!-- <i class="material-icons">check</i> -->
+      <i class="material-icons">{{ item.confirmado ? 'check' : 'access_time' }}</i>
+    </md-button>
+  </md-list-item>
 
-  </md-list>
+</md-list>
 
 
 <md-button class="md-primary md-fab md-fab-bottom-right" ng-click="showTabDialog($event)">+</md-button>
