@@ -19,7 +19,18 @@ angular.module('meuChurrascoApp')
     },
 
     pegarConvidadosSalvosLocalmente: function (idEvento) {
-      return JSON.parse(localStorage.getItem("convidadosDeEventos"))
+      let itemsLocais = JSON.parse(localStorage.getItem("convidadosDeEventos"))
+      let pertencemAoEvento = [];
+
+      if (itemsLocais !== null) {
+        for (var i = 0; i < itemsLocais.length; i++) {
+          if (itemsLocais[i].evento === idEvento) {
+            pertencemAoEvento.push(itemsLocais[i])
+          }
+        }
+      }
+
+      return pertencemAoEvento;
     },
 
     salvarConvidadoLocalmente: function (idEvento, convidado) {
@@ -38,11 +49,37 @@ angular.module('meuChurrascoApp')
 
       convidadoObj.evento = idEvento;
       convidadoObj.convidado = convidado;
-      convidadoObj.convidado.listaContribuicoes.push(convidado.listaContribuicoes);
+      convidadoObj.convidado.listaContribuicoes = convidado.listaContribuicoes[0];
       convidadoObj.convidado.confirmado = false;
       listaLocais.push(convidadoObj);
 
       localStorage.setItem("convidadosDeEventos", JSON.stringify(listaLocais))
+    },
+
+    getQtdConvidadosLocal: function (idEvento) {
+      if (this.pegarConvidadosSalvosLocalmente(idEvento).length > 0) {
+        return this.pegarConvidadosSalvosLocalmente(idEvento).length;
+      }
+      return 0;
+    },
+
+
+    removerConvidadosLocais: function (idEvento){
+      let itemsLocais = this.pegarConvidadosSalvosLocalmente(idEvento);
+
+      if (itemsLocais !== null) {
+        for (var i = 0; i < itemsLocais.length; i++) {
+          if (itemsLocais[i].evento === idEvento) {
+            itemsLocais.splice(i, 1);
+          }
+        }
+      }
+
+      if (itemsLocais.length === 0) {
+        localStorage.removeItem("convidadosDeEventos")
+      } else {
+        localStorage.setItem("convidadosDeEventos", itemsLocais)
+      }
     }
   }  
 });

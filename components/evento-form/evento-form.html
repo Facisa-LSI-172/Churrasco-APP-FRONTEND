@@ -46,7 +46,7 @@
     </div>
 
     <md-button class="md-raised md-primary" ng-click="salvarOuEditar()">{{ eventoExiste ? 'Salvar Evento' : 'Criar Evento' }}</md-button>
-    <md-button class="md-raised md-warn" ng-click="salvarOuEditar()">{{ eventoExiste ? 'Enviar Convites' : 'Criar Evento' }}</md-button>
+    <md-button class="md-raised md-warn" ng-click="enviarConvitesParaConvidados()" ng-show="{{ eventoExiste }}">Enviar Convites</md-button>
   </md-content>
 </md-card>
 

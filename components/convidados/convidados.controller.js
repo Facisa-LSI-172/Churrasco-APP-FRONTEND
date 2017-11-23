@@ -45,28 +45,35 @@ angular.module('meuChurrascoApp')
         // })
 
         $scope.hide();
-        $rootScope.pegarConvidados();
-
+        $rootScope.pegarConvidados($scope.idEvento);
       }
 
     }
 
 
     $scope.idEvento = $routeParams.id;
+    $rootScope.convidados = [];
 
     EventoService.getUmEvento($scope.idEvento).then(function (data) {
       $scope.evento = new Evento(data);
-      $scope.convidados = data.listaParticipantes;
+
+      // if ($scope.evento.listaParticipantes !== null) {
+      //   $scope.convidados.push($scope.evento.listaParticipantes);
+      // }
     });
 
     $scope.convidado = new Convidado();
 
 
-    $rootScope.pegarConvidados = function () {
-      $scope.convidados = ConvidadosService.pegarConvidadosSalvosLocalmente();
+    $rootScope.pegarConvidados = function (id) {
+      let itens = ConvidadosService.pegarConvidadosSalvosLocalmente(id);
+      
+      for (var i = 0; i < itens.length; i++) {
+        $rootScope.convidados.push(itens[i]);
+      }
     }
     
-    $rootScope.pegarConvidados();
+    $rootScope.pegarConvidados($scope.idEvento);
   })
 
 
